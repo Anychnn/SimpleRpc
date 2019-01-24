@@ -1,6 +1,24 @@
 package com.anyang.manage;
 
-public class ConnectionManage {
+import java.util.concurrent.Future;
 
-    private 
+public class RpcInvoker {
+
+    private static RpcInvoker rpcInvoker;
+
+    public static RpcInvoker newInstance() {
+        if (rpcInvoker == null) {
+            synchronized (RpcInvoker.class) {
+                if (rpcInvoker == null) {
+                    rpcInvoker = new RpcInvoker();
+                }
+            }
+        }
+        return rpcInvoker;
+    }
+
+    Future invokeMethod(String methodName) {
+
+        return null;
+    }
 }
