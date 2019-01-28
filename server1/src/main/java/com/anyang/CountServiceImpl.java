@@ -5,7 +5,7 @@ import com.anyang.annotation.RpcService;
 
 import java.util.Random;
 
-@RpcService(CountService.class)
+@RpcService
 public class CountServiceImpl implements CountService {
     @Override
     public int count() {

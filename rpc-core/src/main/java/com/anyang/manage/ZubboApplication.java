@@ -38,9 +38,16 @@ public class ZubboApplication {
         return (T) Proxy.newProxyInstance(clazz.getClassLoader(), new Class[]{clazz}, new RpcProxy());
     }
 
-    public void register(Object service,String serverAddress) throws Exception {
-        String serviceName = service.getClass().getName();
-        log.info("register service:", serviceName);
+    public void register(Object service, String serverAddress) throws Exception {
+        Class[] infs = service.getClass().getInterfaces();
+        String serviceName = null;
+        if (infs == null || infs.length <= 0) {
+            log.error("RpcService does not found any interface to delegate, class name: {}", service.getClass().getName());
+            throw new IllegalArgumentException(String.format("RpcService does not found any interface to delegate, class name: {}", service.getClass().getName()));
+        } else {
+            serviceName = infs[0].getTypeName();
+        }
+        log.info("注册服务到 zookeeper: {}", serviceName);
         CreateBuilder createBuilder = client.create();
         createServiceNode(client, createBuilder, serviceName);
 

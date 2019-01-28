@@ -3,6 +3,7 @@ package com.anyang;
 import com.anyang.annotation.RpcService;
 import com.anyang.manage.ZubboApplication;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
@@ -32,7 +33,6 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
         Map<String, Object> beanMap = applicationContext.getBeansWithAnnotation(RpcService.class);
         if (MapUtils.isNotEmpty(beanMap)) {
             for (Object bean : beanMap.values()) {
-                log.info("get bean {}", bean.getClass());
                 try {
                     zubboApplication.register(bean, serverAddress);
                 } catch (Exception e) {
