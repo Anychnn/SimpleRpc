@@ -3,17 +3,12 @@ package com.anyang.manage;
 import com.anyang.RpcHandler;
 import com.anyang.invoke.RpcFuture;
 import com.anyang.protocal.RpcRequest;
-import com.anyang.protocal.SyncRpcResponse;
-import com.anyang.registry.ConnectionManager;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Slf4j
 public class RpcProxy implements InvocationHandler {
@@ -30,7 +25,7 @@ public class RpcProxy implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-//        SyncRpcResponse response = RpcInvoker.getInstance().invokeMethod(method.getDeclaringClass(), method, args);
+//        RpcResponse response = RpcInvoker.getInstance().invokeMethod(method.getDeclaringClass(), method, args);
         RpcRequest request = new RpcRequest();
         request.setMethodName(method.getName());
         request.setParameters(args);
@@ -40,7 +35,7 @@ public class RpcProxy implements InvocationHandler {
 
         RpcHandler handler = chooseHandler();
         RpcFuture future = handler.sendRequest(request);
-//        SyncRpcResponse response = ConnectionManager.getInstance().invokeMethod(method.getDeclaringClass(), method, args);
+//        RpcResponse response = ConnectionManager.getInstance().invokeMethod(method.getDeclaringClass(), method, args);
         log.info("method invoked : {}", method.getName());
         return future.get();
     }

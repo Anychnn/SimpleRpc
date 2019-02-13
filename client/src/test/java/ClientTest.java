@@ -1,6 +1,5 @@
 import com.anyang.CountService;
 import com.anyang.manage.ZubboApplication;
-import com.anyang.registry.ConnectionManager;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -8,10 +7,10 @@ import java.util.Arrays;
 public class ClientTest {
 
 
+    //client 压力测试
     @Test
-    public void test() throws Exception {
+    public void clientBeanchTest() throws Exception {
         ZubboApplication application = new ZubboApplication("112.74.62.29:2181", "localhost:3002");
-        application.startWatch();
 
         long startTine = System.currentTimeMillis();
 

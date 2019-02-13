@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class TestZubbo {
     @Test
-    public void test() throws InterruptedException {
+    public void test() throws Exception {
         String zookeeper = "112.74.62.29:2181";
         String serverAddress = "localhost:4040";
         ZubboApplication application = new ZubboApplication(zookeeper, serverAddress);

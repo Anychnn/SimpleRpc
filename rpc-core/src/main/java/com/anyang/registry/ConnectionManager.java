@@ -1,13 +1,13 @@
 package com.anyang.registry;
 
+import com.anyang.InvokerEnum;
 import com.anyang.ZubboConfig;
+import com.anyang.invoke.CglibInvoker;
+import com.anyang.invoke.Invoker;
+import com.anyang.invoke.JDKInvoker;
 import com.anyang.protocal.RpcRequest;
-import com.anyang.protocal.SyncRpcResponse;
+import com.anyang.protocal.RpcResponse;
 import com.anyang.util.SerializationUtil;
-import com.dyuproject.protostuff.LinkedBuffer;
-import com.dyuproject.protostuff.ProtostuffIOUtil;
-import com.dyuproject.protostuff.Schema;
-import com.dyuproject.protostuff.runtime.RuntimeSchema;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.*;
@@ -22,6 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.lang.reflect.Method;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 @Slf4j
 public class ConnectionManager {
@@ -31,7 +32,7 @@ public class ConnectionManager {
     //跟zookeeper保持一致
     public Map<String, List<String>> serviceMap = new ConcurrentHashMap<>();
 
-    public Set<String> listeningServices = new HashSet<>();
+    public Set<String> listeningServices = new ConcurrentSkipListSet<>();
 
     private String serverAddress;
 
@@ -74,9 +75,9 @@ public class ConnectionManager {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
                             pipeline.addLast(new LengthFieldBasedFrameDecoder(1024, 0, 4, 0, 0))
-                                    .addLast(new MessageToByteEncoder<SyncRpcResponse>() {
+                                    .addLast(new MessageToByteEncoder<RpcResponse>() {
                                         @Override
-                                        protected void encode(ChannelHandlerContext ctx, SyncRpcResponse msg, ByteBuf out) throws Exception {
+                                        protected void encode(ChannelHandlerContext ctx, RpcResponse msg, ByteBuf out) throws Exception {
                                             byte[] data = SerializationUtil.serialize(msg);
                                             out.writeInt(data.length);
                                             out.writeBytes(data);
@@ -101,13 +102,11 @@ public class ConnectionManager {
 
                                             String methodName = msg.getMethodName();
                                             Object[] params = msg.getParameters();
-                                            //reflect
-                                            Method method = serviceBean.getClass().getMethod(methodName, msg.getParameterTypes());
-                                            method.setAccessible(true);
-                                            Object result = method.invoke(serviceBean, params);
-                                            log.info("result:" + result);
 
-                                            SyncRpcResponse response = new SyncRpcResponse();
+                                            //执行方法
+                                            Object result = selectInvoker().invoke(serviceBean, msg);
+
+                                            RpcResponse response = new RpcResponse();
                                             response.setResult(result);
                                             response.setRequestId(msg.getRequestId());
                                             ctx.writeAndFlush(response)
@@ -138,9 +137,18 @@ public class ConnectionManager {
     }
 
 
-    public SyncRpcResponse invokeMethod(Class service, Method method, Object[] args) {
-        return new SyncRpcResponse();
+    public RpcResponse invokeMethod(Class service, Method method, Object[] args) {
+        return new RpcResponse();
     }
 
 
+    //默认使用jdk
+    private Invoker selectInvoker() {
+        if (ZubboConfig.invokerEnum == InvokerEnum.JDKInvoker) {
+            return new JDKInvoker();
+        } else if (ZubboConfig.invokerEnum == InvokerEnum.CGlibInvoker) {
+            return new CglibInvoker();
+        }
+        return new JDKInvoker();
+    }
 }

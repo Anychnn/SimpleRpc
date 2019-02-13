@@ -3,16 +3,15 @@ package com.anyang;
 import com.anyang.invoke.RpcFuture;
 import com.anyang.manage.ZubboApplication;
 import com.anyang.protocal.RpcRequest;
-import com.anyang.protocal.SyncRpcResponse;
+import com.anyang.protocal.RpcResponse;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.springframework.util.StringUtils;
-import org.springframework.validation.annotation.Validated;
 
 import java.util.concurrent.CountDownLatch;
 
-public class RpcHandler extends SimpleChannelInboundHandler<SyncRpcResponse> {
+public class RpcHandler extends SimpleChannelInboundHandler<RpcResponse> {
 
     private ZubboApplication application;
 
@@ -31,7 +30,7 @@ public class RpcHandler extends SimpleChannelInboundHandler<SyncRpcResponse> {
 //    }
 
     @Override
-    protected void messageReceived(ChannelHandlerContext ctx, SyncRpcResponse msg) throws Exception {
+    protected void messageReceived(ChannelHandlerContext ctx, RpcResponse msg) throws Exception {
         System.out.println("client received :" + msg);
     }
 

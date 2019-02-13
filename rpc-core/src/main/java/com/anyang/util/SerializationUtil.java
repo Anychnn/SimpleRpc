@@ -5,13 +5,34 @@ import com.dyuproject.protostuff.LinkedBuffer;
 import com.dyuproject.protostuff.ProtostuffIOUtil;
 import com.dyuproject.protostuff.Schema;
 import com.dyuproject.protostuff.runtime.RuntimeSchema;
+import org.springframework.objenesis.Objenesis;
+import org.springframework.objenesis.ObjenesisStd;
+
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static com.dyuproject.protostuff.runtime.RuntimeSchema.getSchema;
 
 public class SerializationUtil {
 
+    private static Map<Class<?>, Schema<?>> cachedSchema = new ConcurrentHashMap<Class<?>, Schema<?>>();
+
+    private static Objenesis objenesis = new ObjenesisStd(true);
+
+    private static <T> Schema<T> getSchema(Class<T> cls) {
+        Schema<T> schema = (Schema<T>) cachedSchema.get(cls);
+        if (schema == null) {
+            schema = RuntimeSchema.createFrom(cls);
+            if (schema != null) {
+                cachedSchema.put(cls, schema);
+            }
+        }
+        return schema;
+    }
+
     /**
      * 反序列化
+     *
      * @param bytes
      * @param clazz
      * @param <T>
@@ -20,7 +41,7 @@ public class SerializationUtil {
      * @throws InstantiationException
      */
     public static <T> T deSerialize(byte[] bytes, Class<T> clazz) throws IllegalAccessException, InstantiationException {
-        T instance = clazz.newInstance();
+        T instance = (T) objenesis.newInstance(clazz);
         Schema<T> schema = RuntimeSchema.createFrom(clazz);
         LinkedBuffer buffer = LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE);
         ProtostuffIOUtil.mergeFrom(bytes, instance, schema);

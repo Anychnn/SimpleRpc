@@ -1,7 +1,7 @@
 package com.anyang.invoke;
 
 import com.anyang.protocal.RpcRequest;
-import com.anyang.protocal.SyncRpcResponse;
+import com.anyang.protocal.RpcResponse;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.*;
@@ -10,7 +10,7 @@ import java.util.concurrent.*;
 public class RpcFuture implements Future<Object> {
 
     private RpcRequest request;
-    private SyncRpcResponse response;
+    private RpcResponse response;
     private long startTime;
     private CountDownLatch latch;
 
@@ -59,7 +59,7 @@ public class RpcFuture implements Future<Object> {
         return response.getResult();
     }
 
-    public void done(SyncRpcResponse response) {
+    public void done(RpcResponse response) {
         this.response = response;
         latch.countDown();
     }

@@ -93,6 +93,13 @@
             <artifactId>protostuff-runtime</artifactId>
             <version>1.0.8</version>
         </dependency>
+
+        <!-- CGLib -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.1</version>
+        </dependency>
     </dependencies>
 
     <build>

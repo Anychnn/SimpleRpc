@@ -20,7 +20,7 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
     private ZubboApplication zubboApplication;
 
 
-    public RpcServer(String zookeeperAddress, String serverAddress) throws InterruptedException {
+    public RpcServer(String zookeeperAddress, String serverAddress) throws Exception {
         this.zookeeperAddress = zookeeperAddress;
         this.serverAddress = serverAddress;
         zubboApplication = new ZubboApplication(zookeeperAddress, serverAddress);
@@ -43,7 +43,7 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
                     }
                     ConnectionManager.getInstance().serviceBeanMap.put(serviceName, bean);
 
-                    zubboApplication.register(bean, serverAddress);
+                    zubboApplication.zookeeperManager.registerService(bean, serverAddress);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
