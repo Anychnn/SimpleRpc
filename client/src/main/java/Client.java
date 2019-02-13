@@ -46,7 +46,9 @@ public class Client {
                                     .addLast(new ChannelHandlerAdapter() {
                                         @Override
                                         public void channelActive(ChannelHandlerContext ctx) throws Exception {
-                                            ctx.writeAndFlush("hello");
+                                            for (int i = 0; i < 1000; i++) {
+                                                ctx.writeAndFlush("hello");
+                                            }
                                         }
                                     });
                         }

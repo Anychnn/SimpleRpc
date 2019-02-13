@@ -17,8 +17,8 @@
 
     <!--服务端配置-->
     <bean id="rpcServer" class="com.anyang.RpcServer">
-        <constructor-arg name="zookeeperAddress" value="${zookeeper.address}"/>
-        <constructor-arg name="serverAddress" value="${server.address}"/>
+        <constructor-arg name="zookeeperAddress" value="${zookeeper.zookeeperAddress}"/>
+        <constructor-arg name="serverAddress" value="${server.zookeeperAddress}"/>
     </bean>
 
 

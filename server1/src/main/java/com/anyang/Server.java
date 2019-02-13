@@ -13,10 +13,12 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.nio.charset.Charset;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
 public class Server {
     public static void main(String[] args) throws InterruptedException {
+        AtomicInteger atomicInteger = new AtomicInteger();
         ServerBootstrap bootstrap = new ServerBootstrap();
         EventLoopGroup boss = new NioEventLoopGroup();
         EventLoopGroup worker = new NioEventLoopGroup();
@@ -27,19 +29,24 @@ public class Server {
                     protected void initChannel(SocketChannel socketChannel) throws Exception {
                         ChannelPipeline pipeline = socketChannel.pipeline();
                         pipeline
+                                .addLast(new LengthFieldBasedFrameDecoder(1024, 0, 4, 0, 0))
 //                                .addLast(new LengthFieldPrepender(4))
                                 .addLast(new ByteToMessageDecoder() {
                                     @Override
                                     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
                                         int length = in.readInt();
                                         byte[] bytes = new byte[length];
-
-                                        in.readBytes()
                                         in.readBytes(bytes);
-                                        System.out.println("server received: " + new String(bytes));
+
+                                        System.out.println("server received " + atomicInteger.incrementAndGet() + ": " + new String(bytes));
                                     }
-                                })
-                                .addLast(new LengthFieldBasedFrameDecoder(1024, 0, 4, 0, 0));
+
+                                    @Override
+                                    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+                                        super.exceptionCaught(ctx, cause);
+                                        log.warn("exception caught");
+                                    }
+                                });
 
                     }
                 });
