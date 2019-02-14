@@ -10,6 +10,7 @@ import org.apache.curator.framework.recipes.cache.TreeCacheEvent;
 import org.apache.curator.framework.recipes.cache.TreeCacheListener;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.KeeperException;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -19,6 +20,7 @@ import java.util.concurrent.Executors;
 public class ZookeeperManager {
 
     private CuratorFramework client;
+
     private String zookeeperAddress;
 
     public ZookeeperManager(String zookeeperAddress) throws Exception {
@@ -76,8 +78,16 @@ public class ZookeeperManager {
         }
     }
 
-    public void createNodeIfNotExist(String path, CreateMode createMode) {
-
+    public void createNodeIfNotExist(String path, CreateMode createMode) throws Exception {
+        CreateBuilder createBuilder = client.create();
+        createBuilder.withMode(createMode);
+        if (client.checkExists().forPath(path) == null) {
+            try {
+                createBuilder.creatingParentContainersIfNeeded().forPath(path, null);
+            } catch (KeeperException.NodeExistsException e) {
+                log.warn("node exist : {}", e.toString());
+            }
+        }
     }
 
 

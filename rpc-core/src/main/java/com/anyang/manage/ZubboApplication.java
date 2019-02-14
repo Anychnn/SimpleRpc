@@ -1,9 +1,6 @@
 package com.anyang.manage;
 
-import com.anyang.RpcHandler;
-import com.anyang.RpcResponseDecoder;
-import com.anyang.ZookeeperManager;
-import com.anyang.ZubboConfig;
+import com.anyang.*;
 import com.anyang.invoke.RpcFuture;
 import com.anyang.protocal.RpcRequest;
 import com.anyang.protocal.RpcResponse;
@@ -36,11 +33,6 @@ public class ZubboApplication {
 
     public ZookeeperManager zookeeperManager;
 
-    public ConcurrentHashMap<String, RpcFuture> pending = new ConcurrentHashMap<>();
-
-    //类名,RpcHandler
-    public ConcurrentHashMap<String, List<RpcHandler>> handlerMap = new ConcurrentHashMap<>();
-
     public ZubboApplication(String zookeeperAddress, String serverAddress) throws Exception {
         ZubboConfig.serverAddress = serverAddress;
         ZubboConfig.zookeeperAddress = zookeeperAddress;
@@ -59,7 +51,11 @@ public class ZubboApplication {
         String serviceName = clazz.getName();
         List<String> providers = zookeeperManager.getChildren("/" + serviceName + "/" + "providers");
         log.info(providers.toString());
-        if (CollectionUtils.isEmpty(handlerMap.get(providers.get(0)))) {
+        if (CollectionUtils.isEmpty(providers)) {
+            throw new RuntimeException("no providers found");
+        }
+
+        if (CollectionUtils.isEmpty(ZubboContext.getInstance().handlerMap.get(providers.get(0)))) {
 
             log.info("从订阅服务 zookeeper: {}", serviceName);
 
@@ -67,68 +63,72 @@ public class ZubboApplication {
             zookeeperManager.createServiceNode(serviceName);
             zookeeperManager.createNodeIfNotExist("/" + serviceName + "/" + "consumers" + "/" + serverAddress, CreateMode.EPHEMERAL);
 
-            //添加到监听服务队列
-            ConnectionManager.getInstance().listeningServices.add(serviceName);
-
-            EventLoopGroup loopGroup = new NioEventLoopGroup(4);
-            Bootstrap client = new Bootstrap();
-            client.group(loopGroup)
-                    .channel(NioSocketChannel.class)
-                    .option(ChannelOption.SO_KEEPALIVE, true)
-                    .option(ChannelOption.TCP_NODELAY, true)
-                    .handler(new ChannelInitializer<SocketChannel>() {
-                        @Override
-                        protected void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline()
-                                    .addLast(new LengthFieldBasedFrameDecoder(1024, 0, 4, 0, 0))
-                                    .addLast(new RpcResponseDecoder(ZubboApplication.this))
-                                    .addLast(new RpcHandler(ZubboApplication.this) {
-                                        @Override
-                                        public void channelActive(ChannelHandlerContext ctx) throws Exception {
-                                            super.channelActive(ctx);
-                                            this.channel = ctx.channel();
-                                            List<RpcHandler> handlers = handlerMap.get(providers.get(0));
-                                            if (handlers == null) {
-                                                handlers = new ArrayList<>();
-                                            }
-                                            handlers.add(this);
-                                            handlerMap.put(providers.get(0), handlers);
-                                            this.initLatch.countDown();
-                                        }
-
-                                        @Override
-                                        public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-                                            super.channelInactive(ctx);
-                                            handlerMap.remove(providers.get(0));
-                                        }
-                                    })
-                                    .addLast(new MessageToByteEncoder<RpcRequest>() {
-                                        @Override
-                                        protected void encode(ChannelHandlerContext ctx, RpcRequest msg, ByteBuf out) throws Exception {
-                                            byte[] data = SerializationUtil.serialize(msg);
-                                            out.writeInt(data.length);
-                                            out.writeBytes(data);
-                                            System.out.println("client encode:" + msg);
-                                        }
-                                    });
-                        }
-                    });
-
             String[] inets = providers.get(0).split(":");
-            client.connect(new InetSocketAddress(inets[0], Integer.valueOf(inets[1])))
-                    .addListener(new ChannelFutureListener() {
-                        @Override
-                        public void operationComplete(ChannelFuture future) throws Exception {
-                            if (future.isSuccess()) {
-                                log.info("success connect to remote server: {}", providers.get(0));
-                            } else {
-                                log.error("connect failed");
-                            }
-                        }
-                    });
+            InetSocketAddress socketAddress = new InetSocketAddress(inets[0], Integer.valueOf(inets[1]));
+            connectToServerNode(socketAddress);
         }
 
         return (T) Proxy.newProxyInstance(clazz.getClassLoader(), new Class[]{clazz}, new RpcProxy(this, providers.get(0)));
+    }
+
+
+    //netty连接远程服务
+    //serverNodeAddress example: localhost:3000
+    private void connectToServerNode(InetSocketAddress socketAddress) {
+        String serverNodeAddress = socketAddress.getHostString() + ":" + socketAddress.getPort();
+        EventLoopGroup loopGroup = new NioEventLoopGroup(4);
+        Bootstrap client = new Bootstrap();
+        client.group(loopGroup)
+                .channel(NioSocketChannel.class)
+                .option(ChannelOption.SO_BACKLOG, 128)      //listening状态 的个数
+                .option(ChannelOption.SO_KEEPALIVE, true)   //保持连接
+                .option(ChannelOption.TCP_NODELAY, true)    //禁用nagel算法
+                .handler(new ChannelInitializer<SocketChannel>() {
+                    @Override
+                    protected void initChannel(SocketChannel ch) throws Exception {
+                        ch.pipeline()
+                                .addLast(new LengthFieldBasedFrameDecoder(1024, 0, 4, 0, 0))
+                                .addLast(new RpcResponseDecoder())
+                                .addLast(new RpcHandler() {
+                                    @Override
+                                    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+                                        super.channelActive(ctx);
+                                        this.channel = ctx.channel();
+                                        List<RpcHandler> handlers = ZubboContext.getInstance().handlerMap.get(serverNodeAddress);
+                                        if (handlers == null) {
+                                            handlers = new ArrayList<>();
+                                        }
+                                        handlers.add(this);
+                                        ZubboContext.getInstance().handlerMap.put(serverNodeAddress, handlers);
+                                        this.initLatch.countDown();
+                                    }
+
+                                    @Override
+                                    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+                                        super.channelInactive(ctx);
+                                        ZubboContext.getInstance().handlerMap.remove(serverNodeAddress);
+                                    }
+                                })
+                                .addLast(new MessageToByteEncoder<RpcRequest>() {
+                                    @Override
+                                    protected void encode(ChannelHandlerContext ctx, RpcRequest msg, ByteBuf out) throws Exception {
+                                        byte[] data = SerializationUtil.serialize(msg);
+                                        out.writeInt(data.length);
+                                        out.writeBytes(data);
+                                        System.out.println("client encode:" + msg);
+                                    }
+                                });
+                    }
+                });
+
+        client.connect(socketAddress)
+                .addListener((ChannelFutureListener) future -> {
+                    if (future.isSuccess()) {
+                        log.info("success connect to remote server: {}", serverNodeAddress);
+                    } else {
+                        log.error("connect failed");
+                    }
+                });
     }
 
     public String getZookeeperAddress() {

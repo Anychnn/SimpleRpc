@@ -1,6 +1,6 @@
 package com.anyang.registry;
 
-import com.anyang.InvokerEnum;
+import com.anyang.invoke.InvokerEnum;
 import com.anyang.ZubboConfig;
 import com.anyang.invoke.CglibInvoker;
 import com.anyang.invoke.Invoker;
@@ -29,15 +29,13 @@ public class ConnectionManager {
 
     private static ConnectionManager instance = null;
 
-    //跟zookeeper保持一致
-    public Map<String, List<String>> serviceMap = new ConcurrentHashMap<>();
+    //providers map 跟zookeeper保持一致
+    //key->com.anyang.CountService  value->localhost:3000
+    public ConcurrentHashMap<String, List<String>> serviceMap = new ConcurrentHashMap<>();
 
-    public Set<String> listeningServices = new ConcurrentSkipListSet<>();
+    public ConcurrentSkipListSet<String> listeningServices = new ConcurrentSkipListSet<>();
 
     private String serverAddress;
-
-    private boolean nettyInit = false;
-
 
     //server
     public Map<String, Object> serviceBeanMap = new HashMap<>();
@@ -134,11 +132,6 @@ public class ConnectionManager {
             worker.shutdownGracefully();
             boss.shutdownGracefully();
         }
-    }
-
-
-    public RpcResponse invokeMethod(Class service, Method method, Object[] args) {
-        return new RpcResponse();
     }
 
 

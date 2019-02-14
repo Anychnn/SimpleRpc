@@ -17,7 +17,7 @@ public class RpcClient implements ApplicationContextAware, InitializingBean {
     public RpcClient(String zookeeperAddress, String serverAdress) throws Exception {
         this.zookeeperAddress = zookeeperAddress;
         this.serverAdress = serverAdress;
-        application = new ZubboApplication(zookeeperAddress, serverAdress);
+        this.application = new ZubboApplication(zookeeperAddress, serverAdress);
     }
 
     @Override

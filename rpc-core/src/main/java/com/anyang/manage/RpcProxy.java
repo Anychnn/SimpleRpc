@@ -1,6 +1,7 @@
 package com.anyang.manage;
 
 import com.anyang.RpcHandler;
+import com.anyang.ZubboContext;
 import com.anyang.invoke.RpcFuture;
 import com.anyang.protocal.RpcRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -49,14 +50,14 @@ public class RpcProxy implements InvocationHandler {
     private RpcHandler chooseHandler() throws InterruptedException {
         long wait = 0;
         long interval = 100;
-        while (CollectionUtils.isEmpty(this.application.handlerMap.get(serverAddress))) {
+        while (CollectionUtils.isEmpty(ZubboContext.getInstance().handlerMap.get(serverAddress))) {
             Thread.sleep(interval);
             wait += interval;
             if (wait > rpcHandlerTimeOut) {
                 throw new RuntimeException(String.format("rpcHandler init time out ,server address is {}", serverAddress));
             }
         }
-        return this.application.handlerMap.get(serverAddress).get(0);
+        return ZubboContext.getInstance().handlerMap.get(serverAddress).get(0);
     }
 
 }
