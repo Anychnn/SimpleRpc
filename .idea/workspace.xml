@@ -1,22 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="314a344f-10b5-4469-b2b9-3093e1b77a91" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/resources/spring-server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/spring-server.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/test/java/ClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/test/java/ClientTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcResponseDecoder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcResponseDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/netty/RpcResponseDecoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/ZookeeperManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZookeeperManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/ZubboConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/ZubboConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/config/ZubboConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZubboApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZubboApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/registry/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/registry/ConnectionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server1/src/main/resources/spring-server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server1/src/main/resources/spring-server.xml" afterDir="false" />
+    <list default="true" id="314a344f-10b5-4469-b2b9-3093e1b77a91" name="Default" comment="项目结构调整">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__cglib_cglib_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_dyuproject_protostuff_protostuff_api_1_0_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_dyuproject_protostuff_protostuff_collectionschema_1_0_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_dyuproject_protostuff_protostuff_core_1_0_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_dyuproject_protostuff_protostuff_runtime_1_0_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_20_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_3_10_5_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_all_5_0_0_Alpha2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jline_jline_0_9_94.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_curator_curator_client_4_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_curator_curator_framework_4_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_curator_curator_recipes_4_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_zookeeper_zookeeper_3_4_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_4_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_16_18.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_log4j12_1_7_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_4_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_4_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/client/target/" />
@@ -61,8 +82,8 @@
           <file leaf-file-name="ZookeeperManager.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZookeeperManager.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="173">
-                  <caret line="122" column="33" selection-start-line="122" selection-start-column="33" selection-end-line="122" selection-end-column="33" />
+                <state relative-caret-position="40">
+                  <caret line="115" column="41" selection-start-line="115" selection-start-column="41" selection-end-line="115" selection-end-column="41" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -74,7 +95,7 @@
             <entry file="file://$PROJECT_DIR$/client/src/test/java/ClientTest.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="200">
-                  <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+                  <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -86,7 +107,7 @@
             <entry file="file://$PROJECT_DIR$/server1/src/test/java/ServerTest.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state>
-                  <caret line="3" column="71" lean-forward="true" selection-start-line="3" selection-start-column="71" selection-end-line="3" selection-end-column="71" />
+                  <caret line="3" column="71" selection-start-line="3" selection-start-column="71" selection-end-line="3" selection-end-column="71" />
                 </state>
               </provider>
             </entry>
@@ -248,8 +269,8 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="76" />
-    <option name="y" value="18" />
+    <option name="x" value="174" />
+    <option name="y" value="34" />
     <option name="width" value="1920" />
     <option name="height" value="991" />
   </component>
@@ -272,118 +293,6 @@
             <path>
               <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
               <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
-              <item name="rpc-core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
-              <item name="rpc-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
-              <item name="rpc-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
-              <item name="rpc-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
-              <item name="rpc-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
-              <item name="rpc-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="anyang" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
-              <item name="server1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
-              <item name="server1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
-              <item name="server1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
-              <item name="server1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
-              <item name="server1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
-              <item name="server1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -641,7 +550,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550126837359</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="项目结构调整">
+      <created>1550127663763</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1550127663763</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -686,13 +602,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="76" y="18" width="1920" height="991" extended-state="0" />
+    <frame x="174" y="34" width="1920" height="991" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Tool Output" order="13" />
       <window_info anchor="bottom" id="Gerrit" order="9" sideWeight="0.49892473" weight="0.35756156" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.16236559" side_tool="true" visible="true" weight="0.39976552" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5016129" side_tool="true" visible="true" weight="0.33059788" />
       <window_info anchor="right" id="Maven Projects" order="9" sideWeight="0.49814585" visible="true" weight="0.14301075" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="2" />
@@ -700,7 +616,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.8376344" visible="true" weight="0.39976552" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.8376344" weight="0.39976552" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32880098" />
       <window_info id="simpleUML" order="6" />
       <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49462366" weight="0.3282532" />
@@ -709,7 +625,7 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.2867738" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7053763" weight="0.38218054" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49892473" weight="0.33059788" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4983871" visible="true" weight="0.33059788" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26075268" />
       <window_info anchor="right" id="BPMNPalette" order="5" />
       <window_info anchor="right" id="Theme Preview" order="7" />
@@ -760,7 +676,8 @@
     <MESSAGE value="Merge branch 'master' of https://github.com/Anychnn/SimpleRpc&#10;&#10;# Conflicts:&#10;#&#9;pom.xml" />
     <MESSAGE value="netty通信" />
     <MESSAGE value="代码精简" />
-    <option name="LAST_COMMIT_MESSAGE" value="代码精简" />
+    <MESSAGE value="项目结构调整" />
+    <option name="LAST_COMMIT_MESSAGE" value="项目结构调整" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1068,14 +985,14 @@
     <entry file="file://$PROJECT_DIR$/server1/src/test/java/ServerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret line="3" column="71" lean-forward="true" selection-start-line="3" selection-start-column="71" selection-end-line="3" selection-end-column="71" />
+          <caret line="3" column="71" selection-start-line="3" selection-start-column="71" selection-end-line="3" selection-end-column="71" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/test/java/ClientTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
-          <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1156,8 +1073,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZookeeperManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="122" column="33" selection-start-line="122" selection-start-column="33" selection-end-line="122" selection-end-column="33" />
+        <state relative-caret-position="40">
+          <caret line="115" column="41" selection-start-line="115" selection-start-column="41" selection-end-line="115" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
