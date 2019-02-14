@@ -1,7 +1,6 @@
-package com.anyang;
+package com.anyang.manage;
 
 import com.anyang.invoke.RpcFuture;
-import com.anyang.manage.ZubboApplication;
 import com.anyang.protocal.RpcRequest;
 import com.anyang.protocal.RpcResponse;
 import io.netty.channel.Channel;

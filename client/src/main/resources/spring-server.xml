@@ -16,7 +16,7 @@
     <context:property-placeholder location="classpath:system.properties"/>
 
     <!--服务端配置-->
-    <bean id="rpcServer" class="com.anyang.RpcClient">
+    <bean id="rpcServer" class="com.anyang.manage.RpcClient">
         <constructor-arg name="zookeeperAddress" value="${zookeeper.zookeeperAddress}"/>
         <constructor-arg name="serverAddress" value="${server.zookeeperAddress}"/>
     </bean>

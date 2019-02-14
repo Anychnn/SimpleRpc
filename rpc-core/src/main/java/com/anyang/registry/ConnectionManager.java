@@ -1,7 +1,8 @@
 package com.anyang.registry;
 
+import com.anyang.manage.ZubboContext;
 import com.anyang.invoke.InvokerEnum;
-import com.anyang.ZubboConfig;
+import com.anyang.config.ZubboConfig;
 import com.anyang.invoke.CglibInvoker;
 import com.anyang.invoke.Invoker;
 import com.anyang.invoke.JDKInvoker;
@@ -19,28 +20,16 @@ import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.MessageToByteEncoder;
 import lombok.extern.slf4j.Slf4j;
 
-import java.lang.reflect.Method;
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentSkipListSet;
 
 @Slf4j
 public class ConnectionManager {
 
     private static ConnectionManager instance = null;
 
-    //providers map 跟zookeeper保持一致
-    //key->com.anyang.CountService  value->localhost:3000
-    public ConcurrentHashMap<String, List<String>> serviceMap = new ConcurrentHashMap<>();
-
-    public ConcurrentSkipListSet<String> listeningServices = new ConcurrentSkipListSet<>();
-
     private String serverAddress;
 
-    //server
-    public Map<String, Object> serviceBeanMap = new HashMap<>();
-
-    public static ConnectionManager getInstance() throws InterruptedException {
+    public static ConnectionManager getInstance() {
         if (instance == null) {
             synchronized (ConnectionManager.class) {
                 if (instance == null) {
@@ -56,9 +45,6 @@ public class ConnectionManager {
         this.serverAddress = serverAddress;
     }
 
-    public void updateZookeeper(String serviceName, List<String> remoteAddresses) {
-        serviceMap.put(serviceName, remoteAddresses);
-    }
 
     public void initServer() throws InterruptedException {
         EventLoopGroup worker = new NioEventLoopGroup();
@@ -96,7 +82,7 @@ public class ConnectionManager {
                                         protected void messageReceived(ChannelHandlerContext ctx, RpcRequest msg) throws Exception {
                                             log.info("server received msg:" + msg);
                                             String className = msg.getClassName();
-                                            Object serviceBean = ConnectionManager.getInstance().serviceBeanMap.get(className);
+                                            Object serviceBean = ZubboContext.getInstance().serviceBeanMap.get(className);
 
                                             String methodName = msg.getMethodName();
                                             Object[] params = msg.getParameters();

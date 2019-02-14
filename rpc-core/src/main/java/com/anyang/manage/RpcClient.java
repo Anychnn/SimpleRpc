@@ -1,4 +1,4 @@
-package com.anyang;
+package com.anyang.manage;
 
 import com.anyang.manage.ZubboApplication;
 import org.springframework.beans.BeansException;

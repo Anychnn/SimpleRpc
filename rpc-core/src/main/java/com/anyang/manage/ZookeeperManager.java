@@ -1,6 +1,6 @@
-package com.anyang;
+package com.anyang.manage;
 
-import com.anyang.registry.ConnectionManager;
+import com.anyang.config.ZubboConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
@@ -117,7 +117,7 @@ public class ZookeeperManager {
                                 String[] paths = event.getData().getPath().split("/");
                                 //ex: /com.anyang.CountService/consumers/localhost:3002
                                 if (paths.length > 0) {
-                                    ConnectionManager.getInstance().listeningServices.add(paths[1]);
+                                    ZubboContext.getInstance().listeningServices.add(paths[1]);
                                 }
                                 log.info("NODE_ADDED: " + event.getData().getPath());
                                 break;
@@ -125,7 +125,7 @@ public class ZookeeperManager {
                                 paths = event.getData().getPath().split("/");
                                 //ex: /com.anyang.CountService/consumers/localhost:3002
                                 if (paths.length > 0) {
-                                    ConnectionManager.getInstance().listeningServices.remove(paths[1]);
+                                    ZubboContext.getInstance().listeningServices.remove(paths[1]);
                                 }
                                 log.info("NODE_REMOVED: " + event.getData().getPath());
                                 break;

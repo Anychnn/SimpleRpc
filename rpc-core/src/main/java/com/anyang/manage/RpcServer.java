@@ -1,7 +1,6 @@
-package com.anyang;
+package com.anyang.manage;
 
 import com.anyang.annotation.RpcService;
-import com.anyang.manage.ZubboApplication;
 import com.anyang.registry.ConnectionManager;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.MapUtils;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
@@ -41,7 +39,7 @@ public class RpcServer implements ApplicationContextAware, InitializingBean {
                     } else {
                         serviceName = infs[0].getTypeName();
                     }
-                    ConnectionManager.getInstance().serviceBeanMap.put(serviceName, bean);
+                    ZubboContext.getInstance().serviceBeanMap.put(serviceName, bean);
 
                     zubboApplication.zookeeperManager.registerService(bean, serverAddress);
                 } catch (Exception e) {

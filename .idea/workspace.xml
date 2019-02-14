@@ -3,27 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="314a344f-10b5-4469-b2b9-3093e1b77a91" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/client/client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/spring-server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/spring-server.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/test/java/ClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/test/java/ClientTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/rpc-core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/rpc-core.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/Consumer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/Provider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/ZubboConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/ZubboConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/invoke/RpcFuture.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/invoke/RpcFuture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcResponseDecoder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcResponseDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/netty/RpcResponseDecoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/ZookeeperManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZookeeperManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/ZubboConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/ZubboConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/config/ZubboConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcProxy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZubboApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZubboApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/protocal/SyncRpcResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/protocal/RpcResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/registry/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/registry/ConnectionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/util/SerializationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/util/SerializationUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/test/java/TestZubbo.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/test/java/TestZubbo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-api/server-api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/server-api/server-api.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server1/server1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/server1/server1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple-rpc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/simple-rpc.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server1/src/main/resources/spring-server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server1/src/main/resources/spring-server.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/client/target/" />
@@ -51,51 +44,28 @@
     <splitter split-orientation="horizontal" split-proportion="0.8261787">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="ZubboApplication.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZubboApplication.java">
+          <file leaf-file-name="ConnectionManager.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/registry/ConnectionManager.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="377">
-                  <caret line="82" column="36" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
+                <state relative-caret-position="-222">
+                  <caret line="65" column="45" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#6046#9386#0" expanded="true" />
-                    <element signature="e#9385#9386#0" expanded="true" />
+                    <element signature="e#2409#6238#0" expanded="true" />
+                    <element signature="e#6237#6238#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="RpcResponseDecoder.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcResponseDecoder.java">
+          <file leaf-file-name="ZookeeperManager.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZookeeperManager.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#550#551#0" expanded="true" />
-                    <element signature="e#596#597#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ZubboConfig.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/ZubboConfig.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="133">
-                  <caret line="7" column="46" lean-forward="true" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+                <state relative-caret-position="173">
+                  <caret line="122" column="33" selection-start-line="122" selection-start-column="33" selection-end-line="122" selection-end-column="33" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="RpcResponse.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/protocal/RpcResponse.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="95">
-                  <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
                 </state>
               </provider>
             </entry>
@@ -103,8 +73,8 @@
           <file leaf-file-name="ClientTest.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/src/test/java/ClientTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="190">
-                  <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+                <state relative-caret-position="200">
+                  <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -115,41 +85,29 @@
           <file leaf-file-name="ServerTest.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/server1/src/test/java/ServerTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="171">
-                  <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="TestZubbo.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/rpc-core/src/test/java/TestZubbo.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="95">
-                  <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ZookeeperManager.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/ZookeeperManager.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="60">
-                  <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
+                <state>
+                  <caret line="3" column="71" lean-forward="true" selection-start-line="3" selection-start-column="71" selection-end-line="3" selection-end-column="71" />
                 </state>
               </provider>
             </entry>
           </file>
           <file leaf-file-name="RpcServer.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcServer.java">
+            <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcServer.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="213">
-                  <caret line="27" selection-start-line="27" selection-end-line="27" />
+                <state relative-caret-position="154">
+                  <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="RpcClient.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcClient.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="152">
+                  <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -164,8 +122,8 @@
           <file leaf-file-name="spring-server.xml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/server1/src/main/resources/spring-server.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="342">
-                  <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
+                <state relative-caret-position="190">
+                  <caret line="10" selection-start-line="10" selection-end-line="11" />
                 </state>
               </provider>
             </entry>
@@ -203,10 +161,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/rpc-core/src/main/java/Consumer.java" />
-        <option value="$PROJECT_DIR$/server-api/src/main/java/CountService.java" />
-        <option value="$PROJECT_DIR$/client/pom.xml" />
-        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/HProxy.java" />
         <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ConnectionManage.java" />
         <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/Invoker.java" />
         <option value="$PROJECT_DIR$/server1/pom.xml" />
@@ -231,8 +185,6 @@
         <option value="$PROJECT_DIR$/server-api/pom.xml" />
         <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/protocal/RpcRequest.java" />
         <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/invoke/RpcFuture.java" />
-        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcHandler.java" />
-        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcProxy.java" />
         <option value="$PROJECT_DIR$/server1/src/test/java/ServerTest.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/invoke/JDKInvoker.java" />
@@ -240,20 +192,26 @@
         <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/InvokerEnum.java" />
         <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/invoke/CglibInvoker.java" />
         <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/invoke/Invoker.java" />
-        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/registry/ConnectionManager.java" />
         <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/util/SerializationUtil.java" />
-        <option value="$PROJECT_DIR$/client/src/test/java/ClientTest.java" />
-        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcClient.java" />
         <option value="$PROJECT_DIR$/rpc-core/src/test/java/TestZubbo.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/ServiceRegistry.java" />
-        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcServer.java" />
         <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/ZubboConfig.java" />
-        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/ZookeeperManager.java" />
         <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/protocal/SyncRpcResponse.java" />
         <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/protocal/RpcResponse.java" />
-        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZubboApplication.java" />
+        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcClient.java" />
+        <option value="$PROJECT_DIR$/client/src/test/java/ClientTest.java" />
+        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcProxy.java" />
         <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcResponseDecoder.java" />
+        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcHandler.java" />
+        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZubboApplication.java" />
+        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/ZookeeperManager.java" />
+        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/ZubboContext.java" />
+        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcServer.java" />
+        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZookeeperManager.java" />
+        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcHandler.java" />
+        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/netty/RpcResponseDecoder.java" />
+        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/registry/ConnectionManager.java" />
       </list>
     </option>
   </component>
@@ -290,7 +248,8 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="69" />
+    <option name="x" value="76" />
+    <option name="y" value="18" />
     <option name="width" value="1920" />
     <option name="height" value="991" />
   </component>
@@ -304,12 +263,41 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
               <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
@@ -389,13 +377,18 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="SimpleRpc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimpleRpc" type="462c0819:PsiDirectoryNode" />
+              <item name="server1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -430,7 +423,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ServerTest.startServer">
+  <component name="RunManager" selected="JUnit.ClientTest.clientBeanchTest">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -468,6 +461,23 @@
       </option>
       <patterns />
     </configuration>
+    <configuration name="ClientTest.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="client" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ClientTest" />
+      <option name="METHOD_NAME" value="test2" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
     <configuration name="ServerTest.startServer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server1" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -492,23 +502,6 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="TestZubbo" />
       <option name="METHOD_NAME" value="test" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="TestZubbo.testSerialize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="rpc-core" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestZubbo" />
-      <option name="METHOD_NAME" value="testSerialize" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -561,16 +554,16 @@
       <item itemvalue="JUnit.ServerTest.startServer" />
       <item itemvalue="JUnit.ClientTest.test" />
       <item itemvalue="JUnit.TestZubbo.test" />
-      <item itemvalue="JUnit.TestZubbo.testSerialize" />
       <item itemvalue="JUnit.ClientTest.clientBeanchTest" />
+      <item itemvalue="JUnit.ClientTest.test2" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ServerTest.startServer" />
         <item itemvalue="JUnit.ClientTest.clientBeanchTest" />
+        <item itemvalue="JUnit.ServerTest.startServer" />
+        <item itemvalue="JUnit.ClientTest.test2" />
         <item itemvalue="JUnit.ClientTest.test" />
         <item itemvalue="JUnit.TestZubbo.test" />
-        <item itemvalue="JUnit.TestZubbo.testSerialize" />
       </list>
     </recent_temporary>
   </component>
@@ -634,38 +627,52 @@
       <option name="project" value="LOCAL" />
       <updated>1550025404314</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="netty通信">
+      <created>1550054036792</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1550054036792</updated>
+    </task>
+    <task id="LOCAL-00009" summary="代码精简">
+      <created>1550126837359</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1550126837359</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ClientTest_clientBeanchTest - 2019.02.13 at 11h 39m 50s.xml">
-      <configuration name="ClientTest.clientBeanchTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ServerTest_startServer - 2019.02.13 at 11h 48m 48s.xml">
+    <history-entry file="ServerTest_startServer - 2019.02.14 at 11h 50m 34s.xml">
       <configuration name="ServerTest.startServer" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ClientTest_clientBeanchTest - 2019.02.13 at 11h 49m 20s.xml">
-      <configuration name="ClientTest.clientBeanchTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ClientTest_clientBeanchTest - 2019.02.13 at 11h 49m 37s.xml">
-      <configuration name="ClientTest.clientBeanchTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ServerTest_startServer - 2019.02.13 at 15h 20m 03s.xml">
+    <history-entry file="ServerTest_startServer - 2019.02.14 at 11h 54m 47s.xml">
       <configuration name="ServerTest.startServer" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ClientTest_clientBeanchTest - 2019.02.13 at 15h 21m 12s.xml">
+    <history-entry file="ClientTest_clientBeanchTest - 2019.02.14 at 14h 29m 02s.xml">
       <configuration name="ClientTest.clientBeanchTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ServerTest_startServer - 2019.02.13 at 17h 18m 38s.xml">
+    <history-entry file="ServerTest_startServer - 2019.02.14 at 14h 29m 43s.xml">
       <configuration name="ServerTest.startServer" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ServerTest_startServer - 2019.02.13 at 17h 18m 48s.xml">
-      <configuration name="ServerTest.startServer" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ClientTest_clientBeanchTest - 2019.02.13 at 17h 19m 44s.xml">
+    <history-entry file="ClientTest_clientBeanchTest - 2019.02.14 at 14h 31m 06s.xml">
       <configuration name="ClientTest.clientBeanchTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ServerTest_startServer - 2019.02.13 at 17h 34m 57s.xml">
+    <history-entry file="ServerTest_startServer - 2019.02.14 at 14h 32m 06s.xml">
+      <configuration name="ServerTest.startServer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ClientTest_clientBeanchTest - 2019.02.14 at 14h 52m 24s.xml">
+      <configuration name="ClientTest.clientBeanchTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ServerTest_startServer - 2019.02.14 at 14h 52m 28s.xml">
+      <configuration name="ServerTest.startServer" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ClientTest_clientBeanchTest - 2019.02.14 at 14h 55m 18s.xml">
+      <configuration name="ClientTest.clientBeanchTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ServerTest_startServer - 2019.02.14 at 14h 55m 23s.xml">
       <configuration name="ServerTest.startServer" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -679,13 +686,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="69" y="0" width="1920" height="991" extended-state="0" />
+    <frame x="76" y="18" width="1920" height="991" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Tool Output" order="13" />
-      <window_info anchor="bottom" id="Gerrit" order="9" sideWeight="0.49946237" weight="0.35756156" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.16021505" side_tool="true" visible="true" weight="0.3130129" />
+      <window_info anchor="bottom" id="Gerrit" order="9" sideWeight="0.49892473" weight="0.35756156" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.16236559" side_tool="true" visible="true" weight="0.39976552" />
       <window_info anchor="right" id="Maven Projects" order="9" sideWeight="0.49814585" visible="true" weight="0.14301075" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="2" />
@@ -693,19 +700,18 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.8397849" visible="true" weight="0.3130129" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.8376344" visible="true" weight="0.39976552" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32880098" />
       <window_info id="simpleUML" order="6" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.4967742" weight="0.3282532" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49462366" weight="0.3282532" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info id="Image Layers" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.2867738" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7053763" weight="0.38218054" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49946237" weight="0.33059788" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19354838" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49892473" weight="0.33059788" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26075268" />
       <window_info anchor="right" id="BPMNPalette" order="5" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4983871" weight="0.3282532" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -714,6 +720,7 @@
       <window_info anchor="right" id="Coverage" order="8" sideWeight="0.5018541" side_tool="true" visible="true" weight="0.14301075" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4983871" weight="0.3282532" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -752,7 +759,8 @@
     <MESSAGE value="init" />
     <MESSAGE value="Merge branch 'master' of https://github.com/Anychnn/SimpleRpc&#10;&#10;# Conflicts:&#10;#&#9;pom.xml" />
     <MESSAGE value="netty通信" />
-    <option name="LAST_COMMIT_MESSAGE" value="netty通信" />
+    <MESSAGE value="代码精简" />
+    <option name="LAST_COMMIT_MESSAGE" value="代码精简" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -760,7 +768,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/registry/ServiceDiscovery.java" />
     <entry file="file://$PROJECT_DIR$/rpc-core/src/main/resources/log4j.properties">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -782,13 +789,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
           <caret line="156" column="18" selection-start-line="156" selection-start-column="18" selection-end-line="156" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main/resources/spring-server.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -831,10 +831,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
-          <folding>
-            <element signature="e#2175#2176#0" expanded="true" />
-            <element signature="e#2201#2202#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -870,18 +866,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#505#506#0" expanded="true" />
-            <element signature="e#551#552#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -951,20 +935,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/InvokerEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/invoke/Invoker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -982,10 +956,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="54" column="32" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
-          <folding>
-            <element signature="e#2068#2069#0" expanded="true" />
-            <element signature="e#2135#2136#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1012,40 +982,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/registry/ConnectionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="40" column="47" lean-forward="true" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/Provider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/Consumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1033">
-          <caret line="24" column="35" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/Provider.java" />
+    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/Consumer.java" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -1053,20 +991,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcProxy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-340">
-          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server1/src/main/resources/spring-server.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
+        <state relative-caret-position="190">
+          <caret line="10" selection-start-line="10" selection-end-line="11" />
         </state>
       </provider>
     </entry>
@@ -1074,16 +1002,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="100" column="34" selection-start-line="100" selection-start-column="34" selection-end-line="100" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/ZookeeperManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1097,47 +1015,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/ZubboConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="46" lean-forward="true" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/protocal/RpcResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server1/src/test/java/ServerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/test/java/ClientTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1148,26 +1029,137 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/RpcResponseDecoder.java">
+    <entry file="file://$PROJECT_DIR$/client/src/main/resources/spring-server.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#550#551#0" expanded="true" />
-            <element signature="e#596#597#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="342">
+          <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/invoke/InvokerEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZubboApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="82" column="36" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
+        <state relative-caret-position="230">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6046#9386#0" expanded="true" />
-            <element signature="e#9385#9386#0" expanded="true" />
+            <element signature="e#5115#5707#0" expanded="true" />
+            <element signature="e#5706#5707#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcProxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="34" column="41" lean-forward="true" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server1/src/test/java/ServerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="3" column="71" lean-forward="true" selection-start-line="3" selection-start-column="71" selection-end-line="3" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/test/java/ClientTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/netty/RpcResponseDecoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/config/ZubboConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/RpcHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZubboContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/registry/ConnectionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-222">
+          <caret line="65" column="45" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2409#6238#0" expanded="true" />
+            <element signature="e#6237#6238#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZookeeperManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="122" column="33" selection-start-line="122" selection-start-column="33" selection-end-line="122" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

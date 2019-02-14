@@ -1,4 +1,4 @@
-package com.anyang;
+package com.anyang.config;
 
 import com.anyang.invoke.InvokerEnum;
 import lombok.Data;
