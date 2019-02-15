@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="314a344f-10b5-4469-b2b9-3093e1b77a91" name="Default" comment="项目结构调整">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZubboContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZubboContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/registry/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/registry/ConnectionManager.java" afterDir="false" />
-    </list>
+    <list default="true" id="314a344f-10b5-4469-b2b9-3093e1b77a91" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/client/target/" />
     <ignored path="$PROJECT_DIR$/server1/target/" />
@@ -29,14 +25,14 @@
     </SUITE>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.8261787">
+    <splitter split-orientation="horizontal" split-proportion="0.52582556">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="ConnectionManager.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ConnectionManager.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/registry/ConnectionManager.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="171">
-                  <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+                  <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -47,8 +43,8 @@
           <file leaf-file-name="ZubboContext.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZubboContext.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="228">
-                  <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+                <state relative-caret-position="247">
+                  <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
                 </state>
               </provider>
             </entry>
@@ -56,7 +52,7 @@
           <file leaf-file-name="ZookeeperManager.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZookeeperManager.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="116">
+                <state relative-caret-position="59">
                   <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -65,11 +61,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+          <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/README.md">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="133">
-                  <caret line="7" column="9" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+                <state relative-caret-position="95">
+                  <caret line="5" column="18" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
                 </state>
               </provider>
             </entry>
@@ -126,8 +122,8 @@
           <file leaf-file-name="spring-server.xml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/server1/src/main/resources/spring-server.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="190">
-                  <caret line="10" selection-start-line="10" selection-end-line="11" />
+                <state relative-caret-position="323">
+                  <caret line="17" column="16" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
                 </state>
               </provider>
             </entry>
@@ -214,8 +210,8 @@
         <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/netty/RpcResponseDecoder.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZubboContext.java" />
         <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/registry/ConnectionManager.java" />
+        <option value="$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZubboContext.java" />
       </list>
     </option>
   </component>
@@ -242,9 +238,9 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="168" />
-    <option name="y" value="50" />
-    <option name="width" value="1920" />
+    <option name="x" value="96" />
+    <option name="y" value="30" />
+    <option name="width" value="1755" />
     <option name="height" value="969" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -624,7 +620,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550128396933</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="修改单例">
+      <created>1550194980523</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1550194980523</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -669,8 +672,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="287" y="64" width="1920" height="969" extended-state="0" />
-    <editor active="true" />
+    <frame x="246" y="33" width="1755" height="969" extended-state="0" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32880098" />
@@ -680,14 +682,14 @@
       <window_info id="Image Layers" order="3" />
       <window_info anchor="bottom" id="Gerrit" order="9" sideWeight="0.49892473" weight="0.35756156" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50268817" side_tool="true" visible="true" weight="0.3393502" />
-      <window_info anchor="right" id="Maven Projects" order="9" sideWeight="0.49814585" visible="true" weight="0.14301075" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="8" sideWeight="0.50265485" side_tool="true" visible="true" weight="0.39350182" />
+      <window_info anchor="right" id="Maven Projects" order="9" sideWeight="0.49814585" visible="true" weight="0.15693216" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7053763" weight="0.38218054" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.2867738" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49731183" visible="true" weight="0.3393502" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49734512" visible="true" weight="0.39350182" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22204301" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24365781" />
       <window_info anchor="right" id="BPMNPalette" order="5" />
       <window_info anchor="bottom" id="ANTLR Preview" order="10" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -744,7 +746,8 @@
     <MESSAGE value="netty通信" />
     <MESSAGE value="代码精简" />
     <MESSAGE value="项目结构调整" />
-    <option name="LAST_COMMIT_MESSAGE" value="项目结构调整" />
+    <MESSAGE value="修改单例" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改单例" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -950,13 +953,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/Provider.java" />
     <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/Consumer.java" />
-    <entry file="file://$PROJECT_DIR$/server1/src/main/resources/spring-server.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" selection-start-line="10" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -1078,17 +1074,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
+    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/registry/ConnectionManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="9" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZookeeperManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="171">
+          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1097,18 +1086,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZubboContext.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+        <state relative-caret-position="247">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/registry/ConnectionManager.java">
+    <entry file="file://$PROJECT_DIR$/rpc-core/src/main/java/com/anyang/manage/ZookeeperManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+        <state relative-caret-position="59">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server1/src/main/resources/spring-server.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="16" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="18" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
         </state>
       </provider>
     </entry>
