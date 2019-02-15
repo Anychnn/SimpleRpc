@@ -1,4 +1,5 @@
 import com.anyang.CountService;
+import com.anyang.exception.RpcTimeOutException;
 import com.anyang.manage.ZubboApplication;
 import org.junit.Test;
 
@@ -16,9 +17,14 @@ public class ClientTest {
         long startTine = System.currentTimeMillis();
 
         for (int i = 0; i < 200; i++) {
-            CountService countService = application.subscribe(CountService.class);
-            int result = countService.count();
-            System.out.println(result);
+            Thread.sleep(1000);
+            try{
+                CountService countService = application.subscribe(CountService.class);
+                int result = countService.count();
+                System.out.println(result);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
         System.out.println("total time : " + (System.currentTimeMillis() - startTine));

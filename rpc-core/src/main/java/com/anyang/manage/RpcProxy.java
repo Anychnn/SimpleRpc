@@ -1,5 +1,6 @@
 package com.anyang.manage;
 
+import com.anyang.exception.RpcTimeOutException;
 import com.anyang.invoke.RpcFuture;
 import com.anyang.protocal.RpcRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -12,13 +13,11 @@ import java.util.UUID;
 @Slf4j
 public class RpcProxy implements InvocationHandler {
 
-    private ZubboApplication application;
     private String serverAddress;
 
-    private static final long rpcHandlerTimeOut = 5000;
+    private static long rpcHandlerTimeOut = 5000;
 
-    public RpcProxy(ZubboApplication application, String serverAddress) {
-        this.application = application;
+    public RpcProxy(String serverAddress) {
         this.serverAddress = serverAddress;
     }
 
@@ -52,7 +51,7 @@ public class RpcProxy implements InvocationHandler {
             Thread.sleep(interval);
             wait += interval;
             if (wait > rpcHandlerTimeOut) {
-                throw new RuntimeException(String.format("rpcHandler init time out ,server address is {}", serverAddress));
+                throw new RpcTimeOutException(String.format("rpcHandler init time out ,server address is {}", serverAddress));
             }
         }
         return ZubboContext.getInstance().handlerMap.get(serverAddress).get(0);

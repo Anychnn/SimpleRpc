@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
  */
 public class ZubboContext {
 
-
+    //单例使用volatile防止重排序
     private volatile static ZubboContext instance = null;
 
     public static ZubboContext getInstance() {

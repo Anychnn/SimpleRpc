@@ -46,7 +46,7 @@ public class ZubboApplication {
     public <T> T subscribe(Class<T> clazz) throws Exception {
         String serviceName = clazz.getName();
         List<String> providers = zookeeperManager.getChildren("/" + serviceName + "/" + "providers");
-        log.info(providers.toString());
+        log.info("providers fount : {}", providers.toString());
         if (CollectionUtils.isEmpty(providers)) {
             throw new RuntimeException("no providers found");
         }
@@ -64,7 +64,7 @@ public class ZubboApplication {
             connectToServerNode(socketAddress);
         }
 
-        return (T) Proxy.newProxyInstance(clazz.getClassLoader(), new Class[]{clazz}, new RpcProxy(this, providers.get(0)));
+        return (T) Proxy.newProxyInstance(clazz.getClassLoader(), new Class[]{clazz}, new RpcProxy(providers.get(0)));
     }
 
 
@@ -112,6 +112,12 @@ public class ZubboApplication {
                                         out.writeInt(data.length);
                                         out.writeBytes(data);
                                         System.out.println("client encode:" + msg);
+                                    }
+
+                                    @Override
+                                    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+//                                        super.exceptionCaught(ctx, cause);
+                                        log.info("client exception caught");
                                     }
                                 });
                     }
