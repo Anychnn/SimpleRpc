@@ -25,7 +25,7 @@ import java.util.*;
 @Slf4j
 public class ConnectionManager {
 
-    private static ConnectionManager instance = null;
+    private volatile static ConnectionManager instance = null;
 
     private String serverAddress;
 

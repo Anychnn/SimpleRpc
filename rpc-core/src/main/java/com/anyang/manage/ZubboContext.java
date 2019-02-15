@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
 public class ZubboContext {
 
 
-    private static ZubboContext instance = null;
+    private volatile static ZubboContext instance = null;
 
     public static ZubboContext getInstance() {
         if (instance == null) {
