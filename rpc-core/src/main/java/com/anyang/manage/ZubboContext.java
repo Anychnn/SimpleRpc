@@ -48,6 +48,6 @@ public class ZubboContext {
     public ConcurrentSkipListSet<String> listeningServices = new ConcurrentSkipListSet<>();
 
     //server 中的服务  key->com.anyang.CountService  value->CountServiceImpl
-    public Map<String, Object> serviceBeanMap = new HashMap<>();
+    public ConcurrentHashMap<String, Object> serviceBeanMap = new ConcurrentHashMap<>();
 
 }
