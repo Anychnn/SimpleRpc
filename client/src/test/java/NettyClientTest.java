@@ -6,6 +6,9 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+import io.netty.handler.codec.LengthFieldPrepender;
+import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import org.junit.Test;
@@ -27,18 +30,22 @@ public class NettyClientTest {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline()
+                                    .addLast(new LengthFieldPrepender(4))
                                     .addLast(new StringDecoder())
                                     .addLast(new StringEncoder())
                                     .addLast(new ChannelHandlerAdapter() {
 
                                         @Override
                                         public void channelActive(ChannelHandlerContext ctx) {
-                                            System.out.println("HelloWorldClientHandler Active");
+                                            for (int i = 0; i < 1000; i++) {
+                                                ctx.writeAndFlush("HelloWorldClientHandler Active");
+                                                System.out.println("HelloWorldClientHandler Active");
+                                            }
                                         }
 
                                         @Override
                                         public void channelRead(ChannelHandlerContext ctx, Object msg) {
-                                            System.out.println("HelloWorldClientHandler read Message:"+msg);
+                                            System.out.println("HelloWorldClientHandler read Message:" + msg);
                                             ctx.close();
                                         }
 
@@ -55,7 +62,7 @@ public class NettyClientTest {
 
             ChannelFuture future = bootstrap.connect("localhost", 20200).sync();
 
-            future.channel().writeAndFlush("hello i am a common client");
+//            future.channel().writeAndFlush("hello i am a common client");
             future.channel().closeFuture().sync();
         } catch (Exception e) {
             e.printStackTrace();

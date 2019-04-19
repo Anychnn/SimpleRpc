@@ -6,10 +6,13 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.http.HttpRequestEncoder;
-import io.netty.handler.codec.http.HttpResponseEncoder;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+import io.netty.handler.codec.LineBasedFrameDecoder;
+import io.netty.handler.codec.MessageToByteEncoder;
+import io.netty.handler.codec.http.*;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import io.netty.util.CharsetUtil;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -34,15 +37,31 @@ public class NettyServerTest {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline()
+                                    .addLast(new LengthFieldBasedFrameDecoder(1024, 0, 4,0,4))
+//                                    .addLast(new LineBasedFrameDecoder(1024))
+//                                    .addLast(new HttpResponseEncoder())
                                     .addLast(new StringDecoder())
                                     .addLast(new StringEncoder())
+                                    .addLast(new MessageToByteEncoder<>() {
+                                    })
                                     .addLast(new ChannelHandlerAdapter() {
+                                        private int tst = 0;
+
                                         @Override
                                         public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-                                            System.out.println("server channelRead..");
-                                            System.out.println(ctx.channel().remoteAddress()+"->Server :"+ msg.toString());
-                                            ctx.write("server write"+msg);
-                                            ctx.flush();
+//                                            System.out.println("server channelRead..");
+                                            tst++;
+                                            System.out.println(ctx.channel().remoteAddress() + "->Server " + tst + ":" + msg.toString());
+//                                            ctx.write("server write" + msg);
+
+
+//                                            FullHttpResponse resp = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1,
+//                                                    HttpResponseStatus.OK,
+//                                                    Unpooled.copiedBuffer("server write" + msg, CharsetUtil.UTF_8));
+//
+//                                            resp.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/html; charset=UTF-8");
+//
+//                                            ctx.writeAndFlush(resp);
                                         }
 
                                         @Override
