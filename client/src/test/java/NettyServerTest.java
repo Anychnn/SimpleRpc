@@ -2,6 +2,7 @@ import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
+import io.netty.channel.embedded.EmbeddedChannel;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -21,6 +22,8 @@ import java.net.InetSocketAddress;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 
+import static org.junit.Assert.*;
+
 public class NettyServerTest {
 
     @Test
@@ -37,21 +40,27 @@ public class NettyServerTest {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline()
-                                    .addLast(new LengthFieldBasedFrameDecoder(1024, 0, 4,0,4))
+                                    .addLast(new LengthFieldBasedFrameDecoder(1024, 0, 4, 0, 4))
 //                                    .addLast(new LineBasedFrameDecoder(1024))
 //                                    .addLast(new HttpResponseEncoder())
                                     .addLast(new StringDecoder())
                                     .addLast(new StringEncoder())
-                                    .addLast(new MessageToByteEncoder<>() {
+                                    .addLast(new SimpleChannelInboundHandler<HeartBeat>() {
+                                        @Override
+                                        protected void messageReceived(ChannelHandlerContext ctx, HeartBeat msg) throws Exception {
+                                            ctx.channel().eventLoop();
+                                            System.out.println("heart beat received");
+                                        }
                                     })
                                     .addLast(new ChannelHandlerAdapter() {
                                         private int tst = 0;
 
                                         @Override
                                         public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-//                                            System.out.println("server channelRead..");
-                                            tst++;
-                                            System.out.println(ctx.channel().remoteAddress() + "->Server " + tst + ":" + msg.toString());
+                                            if (msg instanceof String) {
+                                                System.out.println("server channelRead..");
+                                                tst++;
+                                                System.out.println(ctx.channel().remoteAddress() + "->Server " + tst + ":" + msg.toString());
 //                                            ctx.write("server write" + msg);
 
 
@@ -62,6 +71,9 @@ public class NettyServerTest {
 //                                            resp.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/html; charset=UTF-8");
 //
 //                                            ctx.writeAndFlush(resp);
+                                            } else if (msg instanceof HeartBeat) {
+                                                System.out.println("read heart beat");
+                                            }
                                         }
 
                                         @Override
@@ -81,4 +93,6 @@ public class NettyServerTest {
         }
 
     }
+
+
 }

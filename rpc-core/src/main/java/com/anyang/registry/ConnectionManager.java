@@ -78,6 +78,13 @@ public class ConnectionManager {
                                         }
                                     })
                                     .addLast(new SimpleChannelInboundHandler<RpcRequest>() {
+
+                                        @Override
+                                        public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+                                            super.channelReadComplete(ctx);
+                                            //todo
+                                        }
+
                                         @Override
                                         protected void messageReceived(ChannelHandlerContext ctx, RpcRequest msg) throws Exception {
                                             log.info("server received msg:" + msg);

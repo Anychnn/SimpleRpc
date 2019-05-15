@@ -9,8 +9,10 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.LengthFieldPrepender;
 import io.netty.handler.codec.LineBasedFrameDecoder;
+import io.netty.handler.codec.MessageToByteEncoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.stream.ChunkedWriteHandler;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -33,14 +35,21 @@ public class NettyClientTest {
                                     .addLast(new LengthFieldPrepender(4))
                                     .addLast(new StringDecoder())
                                     .addLast(new StringEncoder())
+                                    .addLast(new MessageToByteEncoder<HeartBeat>() {
+                                        @Override
+                                        protected void encode(ChannelHandlerContext ctx, HeartBeat msg, ByteBuf out) throws Exception {
+                                            
+                                        }
+                                    })
                                     .addLast(new ChannelHandlerAdapter() {
 
                                         @Override
                                         public void channelActive(ChannelHandlerContext ctx) {
-                                            for (int i = 0; i < 1000; i++) {
-                                                ctx.writeAndFlush("HelloWorldClientHandler Active");
-                                                System.out.println("HelloWorldClientHandler Active");
-                                            }
+//                                            for (int i = 0; i < 1; i++) {
+                                            ctx.writeAndFlush("HelloWorldClientHandler Active");
+                                            ctx.writeAndFlush(new HeartBeat());
+                                            System.out.println("HelloWorldClientHandler Active");
+//                                            }
                                         }
 
                                         @Override
