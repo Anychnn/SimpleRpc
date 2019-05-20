@@ -13,10 +13,12 @@ import io.netty.handler.codec.MessageToByteEncoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.stream.ChunkedWriteHandler;
+import io.netty.handler.timeout.IdleStateHandler;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.concurrent.TimeUnit;
 
 public class NettyClientTest {
 
@@ -32,13 +34,14 @@ public class NettyClientTest {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline()
+                                    .addLast(new IdleStateHandler(5, 0, 0, TimeUnit.SECONDS))
                                     .addLast(new LengthFieldPrepender(4))
                                     .addLast(new StringDecoder())
                                     .addLast(new StringEncoder())
                                     .addLast(new MessageToByteEncoder<HeartBeat>() {
                                         @Override
                                         protected void encode(ChannelHandlerContext ctx, HeartBeat msg, ByteBuf out) throws Exception {
-                                            
+
                                         }
                                     })
                                     .addLast(new ChannelHandlerAdapter() {
@@ -65,7 +68,8 @@ public class NettyClientTest {
                                             ctx.close();
                                         }
 
-                                    });
+                                    })
+                                    .addLast(new HeartBeatServerHandler());
                         }
                     });
 

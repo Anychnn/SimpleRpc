@@ -13,6 +13,7 @@ import io.netty.handler.codec.MessageToByteEncoder;
 import io.netty.handler.codec.http.*;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.CharsetUtil;
 import org.junit.Test;
 
@@ -21,6 +22,7 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 
@@ -40,6 +42,7 @@ public class NettyServerTest {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline()
+                                    .addLast(new IdleStateHandler(5, 0, 0, TimeUnit.SECONDS))
                                     .addLast(new LengthFieldBasedFrameDecoder(1024, 0, 4, 0, 4))
 //                                    .addLast(new LineBasedFrameDecoder(1024))
 //                                    .addLast(new HttpResponseEncoder())
@@ -81,7 +84,8 @@ public class NettyServerTest {
                                             cause.printStackTrace();
                                             ctx.close();
                                         }
-                                    });
+                                    })
+                                    .addLast(new HeartBeatServerHandler());
                         }
                     });
 
