@@ -118,6 +118,7 @@ public class ZubboApplication {
                                     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
 //                                        super.exceptionCaught(ctx, cause);
                                         log.info("client exception caught");
+                                        cause.printStackTrace();
                                     }
                                 });
                     }

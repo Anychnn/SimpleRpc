@@ -74,7 +74,9 @@ public class ConnectionManager {
                                             byte[] data = new byte[length];
                                             in.readBytes(data);
                                             RpcRequest rpcRequest = SerializationUtil.deSerialize(data, RpcRequest.class);
-                                            out.add(rpcRequest);
+                                            if (rpcRequest != null) {
+                                                out.add(rpcRequest);
+                                            }
                                         }
                                     })
                                     .addLast(new SimpleChannelInboundHandler<RpcRequest>() {
@@ -112,6 +114,7 @@ public class ConnectionManager {
 
                                         @Override
                                         public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+                                            cause.printStackTrace();
 //                                            super.exceptionCaught(ctx, cause);
                                         }
                                     });
