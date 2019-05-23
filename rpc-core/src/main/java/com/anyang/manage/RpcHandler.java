@@ -25,9 +25,9 @@ public class RpcHandler extends SimpleChannelInboundHandler<RpcResponse> {
         if (StringUtils.isEmpty(request.getRequestId())) {
             throw new RuntimeException("request id is null");
         }
-        channel.writeAndFlush(request);
         RpcFuture future = new RpcFuture(request);
         ZubboContext.getInstance().pending.put(request.getRequestId(), future);
+        channel.writeAndFlush(request);
         return future;
     }
 }

@@ -11,6 +11,7 @@
 - 反射,默认使用jdk反射 jdk1.8情况下 反射和cglib字节码技术 性能差别不大
 - spring 的支持
 - netty解决了大量CLOSE_WAIT的socket问题
+- 设置心跳时间,断线开始尝试重连
 
 todo
 - 负载均衡策略,隐式的根据延迟

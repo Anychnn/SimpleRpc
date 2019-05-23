@@ -1,24 +1,13 @@
 package com.anyang.manage;
 
 import com.anyang.config.ZubboConfig;
-import com.anyang.netty.RpcResponseDecoder;
-import com.anyang.protocal.RpcRequest;
-import com.anyang.util.SerializationUtil;
-import io.netty.bootstrap.Bootstrap;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.*;
-import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.SocketChannel;
-import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
-import io.netty.handler.codec.MessageToByteEncoder;
+import com.anyang.netty.ClientNettyBootstrap;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.zookeeper.CreateMode;
 
 import java.lang.reflect.Proxy;
 import java.net.InetSocketAddress;
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -71,67 +60,8 @@ public class ZubboApplication {
     //netty连接远程服务
     //serverNodeAddress example: localhost:3000
     private void connectToServerNode(InetSocketAddress socketAddress) {
-        String serverNodeAddress = socketAddress.getHostString() + ":" + socketAddress.getPort();
-        EventLoopGroup loopGroup = new NioEventLoopGroup(4);
-        Bootstrap client = new Bootstrap();
-        client.group(loopGroup)
-                .channel(NioSocketChannel.class)
-                .option(ChannelOption.SO_BACKLOG, 128)      //listening状态 的个数
-                .option(ChannelOption.SO_KEEPALIVE, true)   //保持连接
-                .option(ChannelOption.TCP_NODELAY, true)    //禁用nagel算法
-                .handler(new ChannelInitializer<SocketChannel>() {
-                    @Override
-                    protected void initChannel(SocketChannel ch) throws Exception {
-                        ch.pipeline()
-                                .addLast(new LengthFieldBasedFrameDecoder(1024, 0, 4, 0, 0))
-                                .addLast(new RpcResponseDecoder())
-                                .addLast(new RpcHandler() {
-                                    @Override
-                                    public void channelActive(ChannelHandlerContext ctx) throws Exception {
-                                        super.channelActive(ctx);
-                                        this.channel = ctx.channel();
-                                        List<RpcHandler> handlers = ZubboContext.getInstance().handlerMap.get(serverNodeAddress);
-                                        if (handlers == null) {
-                                            handlers = new ArrayList<>();
-                                        }
-                                        handlers.add(this);
-                                        ZubboContext.getInstance().handlerMap.put(serverNodeAddress, handlers);
-                                        this.initLatch.countDown();
-                                    }
-
-                                    @Override
-                                    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-                                        super.channelInactive(ctx);
-                                        ZubboContext.getInstance().handlerMap.remove(serverNodeAddress);
-                                    }
-                                })
-                                .addLast(new MessageToByteEncoder<RpcRequest>() {
-                                    @Override
-                                    protected void encode(ChannelHandlerContext ctx, RpcRequest msg, ByteBuf out) throws Exception {
-                                        byte[] data = SerializationUtil.serialize(msg);
-                                        out.writeInt(data.length);
-                                        out.writeBytes(data);
-                                        System.out.println("client encode:" + msg);
-                                    }
-
-                                    @Override
-                                    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-//                                        super.exceptionCaught(ctx, cause);
-                                        log.info("client exception caught");
-                                        cause.printStackTrace();
-                                    }
-                                });
-                    }
-                });
-
-        client.connect(socketAddress)
-                .addListener((ChannelFutureListener) future -> {
-                    if (future.isSuccess()) {
-                        log.info("success connect to remote server: {}", serverNodeAddress);
-                    } else {
-                        log.error("connect failed");
-                    }
-                });
+        ClientNettyBootstrap clientNettyBootstrap = new ClientNettyBootstrap();
+        clientNettyBootstrap.connect(socketAddress);
     }
 
     public String getZookeeperAddress() {

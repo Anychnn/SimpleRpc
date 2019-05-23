@@ -17,23 +17,25 @@ public class ClientTest {
         ZubboApplication application = new ZubboApplication("112.74.62.29:2181", "localhost:3002");
         long startTine = System.currentTimeMillis();
 
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(10, 20, 100, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<>());
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(40, 50, 100, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<>(), new RejectedExecutionHandler() {
+            @Override
+            public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+                System.out.println("rejected");
+            }
+        });
 
-        int repeatCount = 100;
+        int repeatCount = 10000;
         CountDownLatch latch = new CountDownLatch(repeatCount);
         for (int i = 0; i < repeatCount; i++) {
-            executor.submit(new Runnable() {
-                @Override
-                public void run() {
-                    CountService countService = null;
-                    try {
-                        countService = application.subscribe(CountService.class);
-                        int result = countService.count();
-                        System.out.println(result);
-                        latch.countDown();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+            executor.submit(() -> {
+                CountService countService = null;
+                try {
+                    countService = application.subscribe(CountService.class);
+                    int result = countService.count();
+                    System.out.println(result);
+                    latch.countDown();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             });
         }
