@@ -1,8 +1,10 @@
-package com.anyang.netty;
+package netty;
 
 import com.anyang.config.OutTypeEnum;
 import com.anyang.manage.RpcHandler;
 import com.anyang.manage.ZubboContext;
+import com.anyang.netty.HeartBeat;
+import com.anyang.netty.RpcResponseDecoder;
 import com.anyang.protocal.RpcRequest;
 import com.anyang.util.SerializationUtil;
 import io.netty.bootstrap.Bootstrap;
@@ -13,22 +15,23 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.MessageToByteEncoder;
-import io.netty.handler.timeout.IdleStateHandler;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
 
 import java.net.InetSocketAddress;
+import java.net.SocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
-public class ClientNettyBootstrap {
+public class NettyClientTest {
 
-    private ChannelFuture channelFuture;
+    @Test
+    public void test() throws InterruptedException {
+        String serverNodeAddress = "localhost:8080";
+        InetSocketAddress socketAddress = new InetSocketAddress("localhost", 8080);
 
-    //netty客户端启动
-    public void connect(InetSocketAddress socketAddress) {
-        String serverNodeAddress = socketAddress.getHostString() + ":" + socketAddress.getPort();
         EventLoopGroup loopGroup = new NioEventLoopGroup(4);
         Bootstrap client = new Bootstrap();
 
@@ -72,42 +75,10 @@ public class ClientNettyBootstrap {
                                             }
                                         }, 0, 5, TimeUnit.SECONDS);
                                     }
-                                })
-                                .addLast(new RpcResponseDecoder())
-                                .addLast(new RpcHandler() {
-                                    @Override
-                                    public void channelActive(ChannelHandlerContext ctx) throws Exception {
-                                        super.channelActive(ctx);
-                                        this.channel = ctx.channel();
-                                        List<RpcHandler> handlers = ZubboContext.getInstance().handlerMap.get(serverNodeAddress);
-                                        if (handlers == null) {
-                                            handlers = new ArrayList<>();
-                                        }
-                                        handlers.add(this);
-                                        ZubboContext.getInstance().handlerMap.put(serverNodeAddress, handlers);
-                                        this.initLatch.countDown();
-                                    }
-
-                                    @Override
-                                    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-                                        super.channelInactive(ctx);
-                                        ZubboContext.getInstance().handlerMap.remove(serverNodeAddress);
-                                    }
-                                })
-                                .addLast(new MessageToByteEncoder<RpcRequest>() {
-                                    @Override
-                                    protected void encode(ChannelHandlerContext ctx, RpcRequest msg, ByteBuf out) throws Exception {
-                                        byte[] data = SerializationUtil.serialize(msg);
-                                        out.writeInt(OutTypeEnum.RRC_RESPONSE.getType());
-                                        out.writeInt(data.length);
-                                        out.writeBytes(data);
-                                        System.out.println("client encode:" + msg);
-                                    }
 
                                     @Override
                                     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-//                                        super.exceptionCaught(ctx, cause);
-                                        log.info("client exception caught");
+                                        super.exceptionCaught(ctx, cause);
                                         cause.printStackTrace();
                                     }
                                 });
@@ -115,7 +86,7 @@ public class ClientNettyBootstrap {
                 });
 
 
-        channelFuture = client.connect(socketAddress)
+        ChannelFuture future1 = client.connect(socketAddress)
                 .addListener((ChannelFutureListener) future -> {
                     if (future.isSuccess()) {
                         log.info("success connect to remote server: {}", serverNodeAddress);
@@ -123,9 +94,10 @@ public class ClientNettyBootstrap {
                         log.error("connect failed");
                     }
                 });
-    }
 
-    public void close() {
-        channelFuture.channel().close();
+
+//        Thread.sleep(5000);
+
+         future1.channel().closeFuture().sync();
     }
 }

@@ -24,7 +24,7 @@ public class ClientTest {
             }
         });
 
-        int repeatCount = 10000;
+        int repeatCount = 1;
         CountDownLatch latch = new CountDownLatch(repeatCount);
         for (int i = 0; i < repeatCount; i++) {
             executor.submit(() -> {
@@ -43,7 +43,8 @@ public class ClientTest {
         latch.await();
         System.out.println("total time : " + (System.currentTimeMillis() - startTine));
 
-        Thread.sleep(10000);
+        Thread.sleep(20000);
+        application.close();
     }
 
     @Test

@@ -1,12 +1,8 @@
-package com.anyang.netty;
+package netty;
 
 import com.anyang.config.OutTypeEnum;
-import com.anyang.config.ZubboConfig;
-import com.anyang.invoke.CglibInvoker;
-import com.anyang.invoke.Invoker;
-import com.anyang.invoke.InvokerEnum;
-import com.anyang.invoke.JDKInvoker;
 import com.anyang.manage.ZubboContext;
+import com.anyang.netty.HeartBeat;
 import com.anyang.protocal.RpcRequest;
 import com.anyang.protocal.RpcResponse;
 import com.anyang.util.SerializationUtil;
@@ -17,17 +13,20 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.ByteToMessageDecoder;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
-import io.netty.handler.codec.LengthFieldPrepender;
 import io.netty.handler.codec.MessageToByteEncoder;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
 
 import java.util.List;
 
-
 @Slf4j
-public class ServerNettyBootstrap {
+public class NettyServerTest {
 
-    public void connect(String serverAddress) throws InterruptedException {
+    private String serverAddress="localhost:8080";
+
+    @Test
+    public void test() throws InterruptedException {
+
         EventLoopGroup worker = new NioEventLoopGroup();
         EventLoopGroup boss = new NioEventLoopGroup();
         try {
@@ -40,14 +39,6 @@ public class ServerNettyBootstrap {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
                             pipeline.addLast(new LengthFieldBasedFrameDecoder(1024, 4, 4, 0, 0))
-                                    .addLast(new MessageToByteEncoder<RpcResponse>() {
-                                        @Override
-                                        protected void encode(ChannelHandlerContext ctx, RpcResponse msg, ByteBuf out) throws Exception {
-                                            byte[] data = SerializationUtil.serialize(msg);
-                                            out.writeInt(data.length);
-                                            out.writeBytes(data);
-                                        }
-                                    })
                                     .addLast(new ByteToMessageDecoder() {
                                         @Override
                                         protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
@@ -68,11 +59,6 @@ public class ServerNettyBootstrap {
                                                 out.add(rpcRequest);
                                             }
                                         }
-
-                                        @Override
-                                        public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-                                            cause.printStackTrace();
-                                        }
                                     })
                                     .addLast(new SimpleChannelInboundHandler<HeartBeat>() {
                                         //process heart beat
@@ -92,45 +78,6 @@ public class ServerNettyBootstrap {
                                             cause.printStackTrace();
 //                                            super.exceptionCaught(ctx, cause);
                                         }
-                                    })
-                                    .addLast(new SimpleChannelInboundHandler<RpcRequest>() {
-                                        //process rpc request
-//                                        @Override
-//                                        public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-//                                            super.channelReadComplete(ctx);
-//                                            //todo
-//                                        }
-
-                                        @Override
-                                        protected void messageReceived(ChannelHandlerContext ctx, RpcRequest msg) throws Exception {
-                                            log.info("server received msg:" + msg);
-                                            String className = msg.getClassName();
-                                            Object serviceBean = ZubboContext.getInstance().serviceBeanMap.get(className);
-
-                                            String methodName = msg.getMethodName();
-                                            Object[] params = msg.getParameters();
-
-                                            //执行方法
-                                            Object result = selectInvoker().invoke(serviceBean, msg);
-
-                                            RpcResponse response = new RpcResponse();
-                                            response.setResult(result);
-                                            response.setRequestId(msg.getRequestId());
-                                            ctx.writeAndFlush(response)
-                                                    .addListener(new ChannelFutureListener() {
-                                                        @Override
-                                                        public void operationComplete(ChannelFuture future) throws Exception {
-                                                            log.info("send response for request: " + msg.getRequestId());
-                                                        }
-                                                    });
-
-                                        }
-
-                                        @Override
-                                        public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-                                            cause.printStackTrace();
-//                                            super.exceptionCaught(ctx, cause);
-                                        }
                                     });
                         }
                     });
@@ -143,15 +90,4 @@ public class ServerNettyBootstrap {
             boss.shutdownGracefully();
         }
     }
-
-    //默认使用jdk
-    private Invoker selectInvoker() {
-        if (ZubboConfig.invokerEnum == InvokerEnum.JDKInvoker) {
-            return new JDKInvoker();
-        } else if (ZubboConfig.invokerEnum == InvokerEnum.CGlibInvoker) {
-            return new CglibInvoker();
-        }
-        return new JDKInvoker();
-    }
-
 }

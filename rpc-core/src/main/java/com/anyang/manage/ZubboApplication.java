@@ -18,6 +18,8 @@ public class ZubboApplication {
 
     public ZookeeperManager zookeeperManager;
 
+    private ClientNettyBootstrap clientNettyBootstrap;
+
     public ZubboApplication(String zookeeperAddress, String serverAddress) throws Exception {
         ZubboConfig.serverAddress = serverAddress;
         ZubboConfig.zookeeperAddress = zookeeperAddress;
@@ -56,13 +58,20 @@ public class ZubboApplication {
         return (T) Proxy.newProxyInstance(clazz.getClassLoader(), new Class[]{clazz}, new RpcProxy(providers.get(0)));
     }
 
-
     //netty连接远程服务
     //serverNodeAddress example: localhost:3000
     private void connectToServerNode(InetSocketAddress socketAddress) {
-        ClientNettyBootstrap clientNettyBootstrap = new ClientNettyBootstrap();
+        clientNettyBootstrap = new ClientNettyBootstrap();
         clientNettyBootstrap.connect(socketAddress);
     }
+
+
+    public void close() {
+        if (clientNettyBootstrap != null) {
+            clientNettyBootstrap.close();
+        }
+    }
+
 
     public String getZookeeperAddress() {
         return zookeeperAddress;
