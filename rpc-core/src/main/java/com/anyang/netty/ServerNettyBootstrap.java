@@ -12,12 +12,9 @@ import com.anyang.protocal.RpcResponse;
 import com.anyang.util.SerializationUtil;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.*;
-import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.ByteToMessageDecoder;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
-import io.netty.handler.codec.LengthFieldPrepender;
 import io.netty.handler.codec.MessageToByteEncoder;
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,12 +25,12 @@ import java.util.List;
 public class ServerNettyBootstrap {
 
     public void connect(String serverAddress) throws InterruptedException {
-        EventLoopGroup worker = new NioEventLoopGroup();
-        EventLoopGroup boss = new NioEventLoopGroup();
+        EventLoopGroup worker = ChannelSelectorUtil.selectEventLoopGroupByOS();
+        EventLoopGroup boss = ChannelSelectorUtil.selectEventLoopGroupByOS();
         try {
             io.netty.bootstrap.ServerBootstrap bootstrap = new io.netty.bootstrap.ServerBootstrap();
             bootstrap.group(boss, worker)
-                    .channel(NioServerSocketChannel.class)
+                    .channel(ChannelSelectorUtil.selectServerChannelClassByOS())
                     .option(ChannelOption.SO_KEEPALIVE, true)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
@@ -51,7 +48,7 @@ public class ServerNettyBootstrap {
                                     .addLast(new ByteToMessageDecoder() {
                                         @Override
                                         protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
-                                            if (in.readableBytes() <= 0){
+                                            if (in.readableBytes() <= 0) {
                                                 log.warn("channel read rejected, no enough bytes");
                                                 return;
                                             }
@@ -75,12 +72,6 @@ public class ServerNettyBootstrap {
                                         }
                                     })
                                     .addLast(new SimpleChannelInboundHandler<HeartBeat>() {
-                                        //process heart beat
-//                                        @Override
-//                                        public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-//                                            super.channelReadComplete(ctx);
-//                                            //todo
-//                                        }
 
                                         @Override
                                         protected void messageReceived(ChannelHandlerContext ctx, HeartBeat msg) throws Exception {
@@ -94,13 +85,6 @@ public class ServerNettyBootstrap {
                                         }
                                     })
                                     .addLast(new SimpleChannelInboundHandler<RpcRequest>() {
-                                        //process rpc request
-//                                        @Override
-//                                        public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-//                                            super.channelReadComplete(ctx);
-//                                            //todo
-//                                        }
-
                                         @Override
                                         protected void messageReceived(ChannelHandlerContext ctx, RpcRequest msg) throws Exception {
                                             log.info("server received msg:" + msg);

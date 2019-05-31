@@ -17,6 +17,7 @@ public class RpcResponseDecoder extends ByteToMessageDecoder {
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
+        if (in.readableBytes() <= 0) return;
         int length = in.readInt();
         byte[] data = new byte[length];
         in.readBytes(data);

@@ -29,11 +29,11 @@ public class ClientNettyBootstrap {
     //netty客户端启动
     public void connect(InetSocketAddress socketAddress) {
         String serverNodeAddress = socketAddress.getHostString() + ":" + socketAddress.getPort();
-        EventLoopGroup loopGroup = new NioEventLoopGroup(4);
+        EventLoopGroup loopGroup = ChannelSelectorUtil.selectEventLoopGroupByOS(4);
         Bootstrap client = new Bootstrap();
 
         client.group(loopGroup)
-                .channel(NioSocketChannel.class)
+                .channel(ChannelSelectorUtil.selectSocketChannelClassByOS())
                 .option(ChannelOption.SO_BACKLOG, 128)      //listening状态 的个数
                 .option(ChannelOption.SO_KEEPALIVE, true)   //保持连接
                 .option(ChannelOption.TCP_NODELAY, true)    //禁用nagel算法
@@ -42,7 +42,7 @@ public class ClientNettyBootstrap {
                     protected void initChannel(SocketChannel ch) throws Exception {
                         ch.pipeline()
                                 .addLast(new LengthFieldBasedFrameDecoder(1024, 0, 4, 0, 0))
-//                                .addLast(new IdleStateHandler(20, 0, 0, TimeUnit.SECONDS))
+                                .addLast(new IdleStateHandler(20, 0, 0, TimeUnit.SECONDS))
                                 .addLast(new MessageToByteEncoder<HeartBeat>() {
                                     @Override
                                     protected void encode(ChannelHandlerContext ctx, HeartBeat msg, ByteBuf out) throws Exception {
@@ -55,22 +55,12 @@ public class ClientNettyBootstrap {
                                     }
                                 })
                                 .addLast(new ChannelHandlerAdapter() {
-
                                     @Override
-                                    public void channelActive(ChannelHandlerContext ctx) throws Exception {
-//                                        log.info("send heart beat");
-//                                        HeartBeat heartBeat = new HeartBeat();
-//                                        ctx.writeAndFlush(heartBeat);
-                                        ctx.fireChannelActive();
-
-                                        ctx.executor().scheduleAtFixedRate(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                log.info("send heart beat");
-                                                HeartBeat heartBeat = new HeartBeat();
-                                                ctx.writeAndFlush(heartBeat);
-                                            }
-                                        }, 0, 5, TimeUnit.SECONDS);
+                                    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+                                        log.info("send heart beat");
+                                        HeartBeat heartBeat = new HeartBeat();
+                                        ctx.writeAndFlush(heartBeat);
+                                        ctx.fireUserEventTriggered(evt);
                                     }
                                 })
                                 .addLast(new RpcResponseDecoder())

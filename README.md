@@ -11,7 +11,8 @@
 - 反射,默认使用jdk反射 jdk1.8情况下 反射和cglib字节码技术 性能差别不大
 - spring 的支持
 - netty解决了大量CLOSE_WAIT的socket问题
-- 设置心跳时间,断线开始尝试重连
+- 设置心跳时间,长时间未接收到数据发送心跳包
+- 当处于linux时候使用epoll(EpollServerSocketChannel和EpollEventLoopGroup)而获得更好的性能
 
 todo
 - 负载均衡策略,隐式的根据延迟

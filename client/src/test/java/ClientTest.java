@@ -43,7 +43,7 @@ public class ClientTest {
         latch.await();
         System.out.println("total time : " + (System.currentTimeMillis() - startTine));
 
-        Thread.sleep(20000);
+        Thread.sleep(40000);
         application.close();
     }
 
